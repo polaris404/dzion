@@ -33,7 +33,6 @@ class Todo(commands.Cog):
         if cmd is None:
             try:
                 tasks_tuple = await todo_obj.all_tasks()
-                print(tasks_tuple)
                 string = ""
                 for i in range(len(tasks_tuple)):
                     if tasks_tuple[i][1] is not None:
