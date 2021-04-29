@@ -1,14 +1,11 @@
 import asyncio
 import asyncpg as pg
 import os
-from boto.s3.connection import S3Connection
 
-s3 = S3Connection(os.environ['HOST'], os.environ['DATABASE'], os.environ['USERNAME'], os.environ['PASSWORD'])
-
-#HOST = os.getenv('HOST')
-#DATABASE = os.getenv('DATABASE')
-#USERNAME = os.getenv('USERNAME')
-#PASSWORD = os.getenv('PASSWORD')
+HOST = os.environ['HOST']
+DATABASE = os.environ['DATABASE']
+USERNAME = os.environ['USERNAME']
+PASSWORD = os.environ['PASSWORD']
 
 loop = asyncio.get_event_loop()
 POOL = loop.run_until_complete(pg.create_pool(host = HOST, database = DATABASE, user = USERNAME, password = PASSWORD))
