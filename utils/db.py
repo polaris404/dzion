@@ -1,6 +1,10 @@
 import asyncio
 import asyncpg as pg
 import os
+import ssl
+ssl_object = ssl.create_default_context(capath='cert.pem')
+ssl_object.check_hostname = False
+ssl_object.verify_mode = ssl.CERT_NONE
 
 HOST = os.environ['DB_HOST']
 DATABASE = os.environ['DATABASE']
@@ -8,7 +12,7 @@ USERNAME = os.environ['USERNAME']
 PASSWORD = os.environ['PASSWORD']
 
 loop = asyncio.get_event_loop()
-POOL = loop.run_until_complete(pg.create_pool(host = HOST, database = DATABASE, user = USERNAME, password = PASSWORD))
+POOL = loop.run_until_complete(pg.create_pool(host = HOST, database = DATABASE, user = USERNAME, password = PASSWORD, ssl = ssl_object))
 
 
 async def get_members():
