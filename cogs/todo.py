@@ -72,7 +72,9 @@ class Todo(commands.Cog):
                 except Exception:
                     await ctx.send("No task available at that index")
             except Exception:
-                if task.lower() == 'all':
+                if task is None:
+                    await ctx.send("Invalid Index")
+                elif task.lower() == 'all':
                     await todo_obj.todo_remove_all()
                     await ctx.message.add_reaction("\U00002705")
                 else:
