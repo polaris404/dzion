@@ -2,7 +2,7 @@ import asyncio
 import asyncpg as pg
 import os
 import ssl
-ssl_object = ssl.create_default_context(capath='cert.pem')
+ssl_object = ssl.create_default_context(capath='rds-ca-2015-root.pem')
 ssl_object.check_hostname = False
 ssl_object.verify_mode = ssl.CERT_NONE
 
