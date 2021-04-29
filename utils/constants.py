@@ -1,8 +1,8 @@
 import json
 import discord
 import os
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['TOKEN'])
+
+TOKEN = os.environ['TOKEN']
 
 DEFAULT_PREFIX = '_'
 OWNER = 629712906011017256
