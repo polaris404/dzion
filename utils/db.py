@@ -2,11 +2,10 @@ import asyncio
 import asyncpg as pg
 import os
 
-HOST = os.getenv('DB_Host')
-DATABASE = os.getenv('DB_Database')
-USERNAME = os.getenv('DB_Username')
-PASSWORD = os.getenv('DB_Password')
-PORT = os.getenv('DB_Port')
+HOST = os.getenv('HOST')
+DATABASE = os.getenv('DATABASE')
+USERNAME = os.getenv('USERNAME')
+PASSWORD = os.getenv('PASSWORD')
 
 loop = asyncio.get_event_loop()
 POOL = loop.run_until_complete(pg.create_pool(host = HOST, database = DATABASE, user = USERNAME, password = PASSWORD))
