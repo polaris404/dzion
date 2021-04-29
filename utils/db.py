@@ -2,7 +2,7 @@ import asyncio
 import asyncpg as pg
 import os
 
-HOST = os.environ['HOST']
+HOST = os.environ['DB_HOST']
 DATABASE = os.environ['DATABASE']
 USERNAME = os.environ['USERNAME']
 PASSWORD = os.environ['PASSWORD']
