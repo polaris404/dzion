@@ -9,7 +9,7 @@ PREFIX = constants.DEFAULT_PREFIX
 print(PREFIX)
 
 
-class AIngel(commands.Bot):
+class DZion(commands.Bot):
     def __init__(self):
         self.PREFIX = PREFIX
         # self.OWNER = OWNER
@@ -43,7 +43,7 @@ class AIngel(commands.Bot):
             print("Bot reconnected")
 
 
-client = AIngel()
+client = DZion()
 client.remove_command("help")
 
 modules = [f"{p.parent}.{p.stem}" for p in pathlib.Path("./cogs").rglob("*.py")]

@@ -32,7 +32,7 @@ class Info(commands.Cog):
         await ctx.send(embed=e)
 
     @commands.command()
-    async def info(self, ctx):
+    async def about(self, ctx):
         bot = await self.client.application_info()
         e = discord.Embed(title=f"{bot.name}",
                           description=f"{bot.description}", colour=COLOURS['purple'])
@@ -41,14 +41,16 @@ class Info(commands.Cog):
         e.add_field(name="Prefix", value=f'`_`')
         e.add_field(name="Author", value=f'{bot.owner}')
         e.add_field(name="Invite URL",
-                    value=f'[Invite Link](https://discord.com/api/oauth2/authorize?client_id=760739125044969472&permissions=8&scope=bot)')
+                    value=f'[Invite Link](https://discord.com/api/oauth2/authorize?client_id=809083240128315402&permissions=600128&scope=bot)')
+        e.add_field(name="Source Code",
+                    value=f'[Github Link](https://github.com/spicymaterial/dzion)')
         e.set_thumbnail(url=str(bot.icon_url))
         e.set_footer(
             text=f'Python Version - {version_info.major}.{version_info.minor}.{version_info.micro} | Discord.py Version - {discord.version_info.major}.{discord.version_info.minor}.{discord.version_info.micro}')
         await ctx.send(embed=e)
 
     @commands.command()
-    async def advinfo(self, ctx):
+    async def info(self, ctx):
         proc = Process()
         with proc.oneshot():
             uptime = timedelta(seconds=time() - proc.create_time())
@@ -64,8 +66,6 @@ class Info(commands.Cog):
         e.add_field(name="‍", value="‍")
         e.add_field(name="CPU time", value=f'{str(cpu_time).split(".")[0]}', inline=True)
 
-        # name and value of below field are Zero Width Space not empty
-        # Check this : https://emojipedia.org/zero-width-joiner/
         e.add_field(name="Ping", value=f'{round(self.client.latency*1000)}ms', inline=True)
         e.add_field(name="‍", value="‍")
         e.add_field(name="Response Time", value=f'-', inline=False)

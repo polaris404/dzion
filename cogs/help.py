@@ -15,6 +15,7 @@ class Help(commands.Cog):
         e.add_field(name='__Todo Commands__ :tools:', value=f'`todo[td]` : Give a list of things todo\n`todo[td] add *task* <time>` : Add task to ToDo list.\n`todo[td] remove *index*` : Removes the task at *index* from the ToDo list. `todo remove all` removes all tasks', inline=False)
         e.set_thumbnail(url=str(bot.icon_url))
         e.set_footer(text="<> indicates optional|[] indicates aliases of that command")
+        e.add_field(name='__Extra__ :linked_paperclips:', value=f'`about` : To know more about the bot\n`invite` : Get the invite link\n`info` : Get info of bot\n`userinfo <user>` : Gives info of user', inline=False)
         await ctx.send(embed=e)
 
 
