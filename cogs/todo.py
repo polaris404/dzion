@@ -80,6 +80,24 @@ class Todo(commands.Cog):
                 else:
                     await ctx.send("Invalid Index")
 
-
+    @commands.command(aliases = ['tdgive'])
+    async def todogive(self, ctx, user : discord.Member = None , *, task = None):
+        todo_obj = ToDo(user.id)
+        if user is None:
+            await ctx.send("No user provided")
+        else:
+            if task is None:
+                await ctx.send("No task given!")
+            else:
+                time = task.split()[-1]
+                if is_valid_time(time):
+                    time = datetime.now() + time_to_timedelta(time)
+                    task = " ".join(task.split()[:-1])
+                else:
+                    time = None
+                await todo_obj.todo_add(task, time)
+                await ctx.message.add_reaction("\U0001f4cb")
+                await self.refresh_sleep(ctx)
+                
 def setup(client):
     client.add_cog(Todo(client))
